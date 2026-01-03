@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun 19 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
+      text-align: center;
+      color: #5a1a2b;
+    }
+    header {
+      padding: 40px 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    .container {
+      padding: 20px;
+    }
+    .cake {
+      margin: 40px auto;
+      width: 200px;
+      position: relative;
+    }
+    .layer {
+      background: #ff7aa2;
+      border-radius: 10px;
+      margin: 5px 0;
+    }
+    .layer.top { height: 40px; }
+    .layer.mid { height: 50px; }
+    .layer.bot { height: 60px; }
+    .candle {
+      width: 10px;
+      height: 30px;
+      background: white;
+      margin: 0 5px;
+      position: relative;
+      cursor: pointer;
+    }
+    .flame {
+      width: 10px;
+      height: 10px;
+      background: orange;
+      border-radius: 50%;
+      position: absolute;
+      top: -10px;
+      left: 0;
+    }
+    .candles {
+      display: flex;
+      justify-content: center;
+      margin-bottom: -10px;
+    }
+    .message {
+      display: none;
+      font-size: 1.2em;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.6);
+      padding: 15px;
+      border-radius: 15px;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎂 Happy 19th Birthday 🎂</h1>
+    <p>A tiny website made just for you, Greyssieee 💕</p>
+  </header>
+
+  <div class="container">
+    <h2>Make a wish 🎉</h2>
+    <p>(tap every candle and make your wish slowly)</p>
+
+    <div class="cake">
+      <div class="candles" id="candles"></div>
+      <div class="layer top"></div>
+      <div class="layer mid"></div>
+      <div class="layer bot"></div>
+    </div>
+
+    <div class="message" id="message">
+      💖 Happy 19th birthday, Greyssieee 💖<br><br>
+      I don’t know where life will take you next,
+      but I hope every step feels lighter,
+      warmer, and full of love.<br><br>
+      Thank you for existing,
+      for laughing, for staying,
+      and for choosing to walk through life
+      the way you do.<br><br>
+      Being part of your journey
+      is something I’ll always be grateful for.<br><br>
+      I hope we keep growing,
+      keep holding hands,
+      and keep finding our way back to each other,
+      no matter how loud the world gets 🤍✨
+    </div>
+  </div>
+
+  <footer>
+    <button onclick="playMusic()" style="padding:10px 20px;border:none;border-radius:20px;background:#ff7aa2;color:white;font-size:1em;cursor:pointer;">🎵 play a little birthday song</button>
+    <p style="margin-top:15px;">Made quietly, with all my heart 🤍</p>
+  </footer>
+
+  <script>
+    const candleContainer = document.getElementById('candles');
+    const message = document.getElementById('message');
+    let blown = 0;
+    const total = 5;
+
+    for (let i = 0; i < total; i++) {
+      const candle = document.createElement('div');
+      candle.className = 'candle';
+
+      const flame = document.createElement('div');
+      flame.className = 'flame';
+
+      candle.appendChild(flame);
+      candle.addEventListener('click', () => {
+        if (flame.style.display !== 'none') {
+          flame.style.display = 'none';
+          blown++;
+          if (blown === total) {
+            message.style.display = 'block';
+            playMusic();
+          }
+        }
+      });
+      candleContainer.appendChild(candle);
+    }
+
+    const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    audio.loop = true;
+    function playMusic() {
+      audio.play();
+    }
+  </script>
+</body>
+</html>
